@@ -129,4 +129,14 @@ topMenuEl.addEventListener("click", function(e) {
   // Hint: Saving the "link" object in a variable will come in handy for passing its subLinks array in Task 5.7
 
   let link = menuLinks[aIndex] 
+
+  // 5.7 
+  let buildSubMenu = function(link) {
+     subMenuEl.style.top = "100%" 
+    }
+
+  if (showingSubMenu === true) {
+    buildSubMenu(link)
+    // console.log("hurray sub link")
+  } else { subMenuEl.style.top = 0}
 })
