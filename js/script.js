@@ -87,7 +87,6 @@ subMenuEl.style.top = "0"
 let showingSubMenu = false;
 
 let topMenuLinks = topMenuEl.children
-console.log(topMenuLinks)
 
 topMenuEl.addEventListener("click", function(e) {
 
@@ -99,31 +98,35 @@ topMenuEl.addEventListener("click", function(e) {
     console.log(e.target.innerHTML);
   };
 
-// console.dir(e.target)
-
+  
   if (e.target.className === "active") {
-    // 1. remove the "active" class from the clicked <a> element.
     e.target.className.remove("active");
-    // 2. set the showingSubMenu to false
     showingSubMenu = false;
-    // 3. Set the CSS top property of the subMenuEl to 0
     subMenuEl.style.top = "0";
-    // 4. return
     return
   }
-  // 5.4 Next, the event listener should remove a class name of active from each <a>element in topMenuLinks- whether the "active" class exists or not.
+  
   for(let a of topMenuLinks){
     a.className = "";
     // console.log(a.className)
     // console.log(topMenuLinks)
   } ;
 
-  // 5.5 Next the event listener should add a class name of active to the <a> element that was clicked
   e.target.classList.add("active");
   
-  // 5.6 Set showingSubMenuto trueif the clicked <a> element's "link" object within menuLinks has a subLinks property (all do, except for the "link" object for ABOUT), otherwise, set it to false.
-  if(e.target.classList === "sub-links"){
-  showingSubMenu = "true"
-  }  
+  // 5.6 Set showingSubMenu to true if the clicked <a> element's "link" object within menuLinks has a subLinks property (all do, except for the "link" object for ABOUT), otherwise, set it to false.
+   
+  // console.dir("this is the event target", e.target)
+  // console.log(`this is ${topMenuLinks}`)
 
+  let aIndex = Array.prototype.indexOf.call(e.target.parentElement.children, e.target);
+
+  // console.log(`aIndex ${aIndex}`);
+  if(menuLinks[aIndex].subLinks !== undefined){
+  showingSubMenu = true
+  } else { showingSubMenu = false; }
+
+  // Hint: Saving the "link" object in a variable will come in handy for passing its subLinks array in Task 5.7
+
+  let link = menuLinks[aIndex] 
 })
