@@ -132,7 +132,12 @@ topMenuEl.addEventListener("click", function(e) {
 
   // 5.7 
   let buildSubMenu = function(link) {
-     subMenuEl.style.top = "100%" 
+    subMenuEl.style.top = "100%" 
+    subMenuEl.textContent = ""
+    for (let sub of link) {
+      const a = document.createElement("a")
+      a.setAttribute("href", link.href)
+    }
     }
 
   if (showingSubMenu === true) {
